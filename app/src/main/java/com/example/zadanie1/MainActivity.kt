@@ -11,16 +11,18 @@ private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val recyclerView = binding.recyclerView
+        setContentView(binding.root)
+        val recyclerView = binding.rvItems
         recyclerView.layoutManager = LinearLayoutManager(this)
+
         val data = ArrayList<Items>()
 
         for (i in 1..5){
             data.add(Items("Item $i"))
         }
-        val adapter = ListAdapter(data)
-        recyclerView.adapter = adapter
-//        Log.d("Adapter", "Item count: ${adapter.itemCount}")
+        val listAdapter = ListAdapter(data)
+        binding.rvItems.adapter = listAdapter
+
 
     }
 }
